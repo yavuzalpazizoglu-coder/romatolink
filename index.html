@@ -24,26 +24,32 @@
       color: #2d2d2d;
       line-height: 1.5;
       background: var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+    .layout {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100dvh;
+      min-height: 100vh;
     }
     .logo-wrap {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: min(calc(100vw - 2rem), var(--logo-max));
-      z-index: 1;
-      pointer-events: none;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      width: 100%;
     }
     .logo {
-      width: 100%;
+      width: min(calc(100vw - 2rem), var(--logo-max));
+      max-width: 100%;
       height: auto;
       display: block;
     }
     .legal {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      flex-shrink: 0;
       width: 100%;
       max-width: 36rem;
       margin: 0 auto;
@@ -54,7 +60,6 @@
       line-height: 1.65;
       color: var(--legal);
       hyphens: auto;
-      z-index: 2;
       background: var(--bg);
     }
     .legal strong {
@@ -70,8 +75,9 @@
   </style>
 </head>
 <body>
+  <div class="layout">
   <div class="logo-wrap">
-    <svg class="logo" viewBox="0 0 3000 1100" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
+    <svg class="logo" viewBox="100 0 2480 1100" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
       <circle cx="240" cy="410" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
       <circle cx="460" cy="330" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
       <circle cx="350" cy="630" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
@@ -98,5 +104,6 @@
       <strong>Kişisel veriler:</strong> Bu önizleme aşamasında e-posta veya şifre gibi veriler toplanmaz veya işlenmez. İleride kişisel veri işlenmesi söz konusu olursa 6698 sayılı Kişisel Verilerin Korunması Kanunu ve ilgili mevzuata uygun aydınlatma ve gerektiğinde açık rıza uygulanacaktır.
     </p>
   </footer>
+  </div>
 </body>
 </html>
