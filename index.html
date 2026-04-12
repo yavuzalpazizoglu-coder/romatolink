@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RomatoLink — Yakında</title>
+  <title>RomatoLink — Giriş (Yapım aşamasında)</title>
   <style>
     :root {
       --bg: #f7f5f2;
@@ -11,6 +11,8 @@
       --accent: #d85a30;
       --muted: #6b6b6b;
       --legal: #8a8a8a;
+      --card: #ffffff;
+      --border: #e8e4de;
     }
     * { box-sizing: border-box; }
     body {
@@ -19,7 +21,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding: 2rem 1.25rem 3rem;
       font-family: Georgia, "Times New Roman", serif;
       background: var(--bg);
@@ -27,39 +29,104 @@
       line-height: 1.5;
     }
     .wrap {
-      max-width: 42rem;
+      max-width: 28rem;
       width: 100%;
-      text-align: center;
     }
     .logo {
-      width: min(100%, 520px);
+      width: min(100%, 420px);
       height: auto;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1.25rem;
       display: block;
     }
-    h1 {
-      font-size: clamp(1.5rem, 4vw, 1.85rem);
+    .banner {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+    .banner h1 {
+      font-size: clamp(1.35rem, 3.5vw, 1.65rem);
       font-weight: normal;
       letter-spacing: 0.02em;
-      margin: 0 0 0.5rem;
+      margin: 0 0 0.35rem;
     }
-    .lead {
+    .banner .sub {
       font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       color: var(--muted);
-      margin: 0 0 2.5rem;
+      margin: 0;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 1.5rem 1.5rem;
+      box-shadow: 0 8px 28px rgba(45, 45, 45, 0.06);
+    }
+    .card h2 {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0 0 1.25rem;
+      text-align: center;
+      color: var(--text);
+    }
+    label {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #4a4a4a;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.65rem 0.75rem;
+      font-size: 1rem;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fafaf8;
+      margin-bottom: 1rem;
+    }
+    input:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+    .notice {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: rgba(216, 90, 48, 0.08);
+      border: 1px solid rgba(216, 90, 48, 0.2);
+      border-radius: 8px;
+      padding: 0.65rem 0.75rem;
+      margin-bottom: 1rem;
+      line-height: 1.45;
+    }
+    button[type="submit"] {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      font-size: 0.95rem;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-weight: 600;
+      color: #fff;
+      background: linear-gradient(180deg, #e06a3d 0%, #c24e26 100%);
+      border: none;
+      border-radius: 8px;
+      cursor: not-allowed;
+      opacity: 0.55;
     }
     .divider {
-      width: 4rem;
+      width: 3rem;
       height: 2px;
       background: var(--accent);
       opacity: 0.35;
-      margin: 0 auto 2rem;
+      margin: 2rem auto 1.5rem;
       border: 0;
     }
     .legal {
       font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       line-height: 1.65;
       color: var(--legal);
       max-width: 36rem;
@@ -70,6 +137,12 @@
     .legal strong {
       color: #6a6a6a;
       font-weight: 600;
+    }
+    .legal p {
+      margin: 0 0 0.85rem;
+    }
+    .legal p:last-child {
+      margin-bottom: 0;
     }
   </style>
 </head>
@@ -90,14 +163,38 @@
       <text x="630" y="700" font-family="Arial, Helvetica, sans-serif" font-size="56" fill="#AAAAAA" letter-spacing="16">CONNECT  ·  SHARE  ·  LEARN</text>
     </svg>
 
-    <h1>Web sitemiz yapım aşamasındadır</h1>
-    <p class="lead">Çok yakında buradayız. Anlayışınız için teşekkür ederiz.</p>
+    <header class="banner">
+      <h1>Yapım aşamasındadır</h1>
+      <p class="sub">Giriş alanı henüz tamamlanmadı; aşağıdaki form yalnızca önizleme amaçlıdır.</p>
+    </header>
+
+    <section class="card" aria-labelledby="login-heading">
+      <h2 id="login-heading">Giriş</h2>
+      <form action="#" method="post" novalidate>
+        <p class="notice" role="status">
+          Bu sayfa geliştirme aşamasındadır. Kimlik doğrulama ve veri işleme henüz devrede değildir; alanlar şu an devre dışıdır.
+        </p>
+        <label for="email">E-posta</label>
+        <input id="email" name="email" type="email" autocomplete="username" disabled placeholder="ornek@eposta.com" />
+        <label for="password">Şifre</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" disabled placeholder="••••••••" />
+        <button type="submit" disabled aria-disabled="true">Giriş yap</button>
+      </form>
+    </section>
 
     <hr class="divider" />
 
-    <p class="legal">
-      <strong>Yasal uyarı:</strong> Bu internet sitesi henüz tamamlanmamış olup yalnızca genel bilgilendirme amaçlıdır. Sitede yer alan metin, görsel ve diğer içerikler taslak niteliğindedir; güncel, eksiksiz veya bağlayıcı bilgi için resmi duyuru ve iletişim kanalları esas alınmalıdır. RomatoLink, yapım aşamasındaki sitede yer alan veya eksik bırakılan bilgilerden doğabilecek doğrudan veya dolaylı zararlardan, bu bilgilere dayanılarak verilen kararlardan veya üçüncü kişilerin işlemlerinden sorumlu tutulamaz. İçerikler önceden haber verilmeksizin değiştirilebilir veya kaldırılabilir.
-    </p>
+    <div class="legal">
+      <p>
+        <strong>Genel yasal uyarı:</strong> Bu internet sitesi ve giriş arayüzü henüz tamamlanmamış olup yalnızca genel bilgilendirme ve önizleme amaçlıdır. Sitede yer alan metin, görsel ve diğer içerikler taslak niteliğindedir; güncel, eksiksiz veya bağlayıcı bilgi için resmi duyuru ve iletişim kanalları esas alınmalıdır.
+      </p>
+      <p>
+        <strong>Sorumluluk reddi:</strong> RomatoLink, yapım aşamasındaki sitede yer alan veya eksik bırakılan bilgilerden doğabilecek doğrudan veya dolaylı zararlardan, bu bilgilere dayanılarak verilen kararlardan veya üçüncü kişilerin işlemlerinden sorumlu tutulamaz. İçerikler önceden haber verilmeksizin değiştirilebilir veya kaldırılabilir.
+      </p>
+      <p>
+        <strong>Kişisel veriler ve giriş:</strong> Bu önizleme aşamasında giriş işlevi etkin değildir; e-posta veya şifre gibi veriler sunucuya iletilmez veya işlenmez. İleride giriş özelliği açıldığında, kişisel verilerin işlenmesi 6698 sayılı Kişisel Verilerin Korunması Kanunu ve ilgili mevzuata uygun olarak aydınlatma metinleri ve açık rıza gerektirdiği hallerde açık rıza ile yürütülecektir.
+      </p>
+    </div>
   </main>
 </body>
 </html>
