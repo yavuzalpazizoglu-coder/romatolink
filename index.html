@@ -8,6 +8,8 @@
     :root {
       --bg: #f7f5f2;
       --legal: #7a7a7a;
+      /* Önceki üst sınır 1440px; %25 küçültme → %75 */
+      --logo-max: 1080px;
     }
     * { box-sizing: border-box; }
     html {
@@ -18,41 +20,42 @@
       min-height: 100%;
       min-height: 100vh;
       min-height: 100dvh;
-      display: grid;
-      place-items: center;
-      padding: clamp(1rem, 3vw, 1.75rem);
       font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
       color: #2d2d2d;
       line-height: 1.5;
       background: var(--bg);
     }
-    .page {
-      width: 100%;
-      max-width: min(100vw - 2rem, 1440px);
-      margin-inline: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    .logo-wrap {
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: min(calc(100vw - 2rem), var(--logo-max));
+      z-index: 1;
+      pointer-events: none;
     }
     .logo {
       width: 100%;
-      max-width: 1440px;
       height: auto;
       display: block;
-      margin: 0 auto 2rem;
     }
     .legal {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
       width: 100%;
       max-width: 36rem;
       margin: 0 auto;
+      padding: 0.75rem 1rem 1.25rem;
       text-align: justify;
       text-align-last: center;
       font-size: 0.68rem;
       line-height: 1.65;
       color: var(--legal);
       hyphens: auto;
+      z-index: 2;
+      background: var(--bg);
     }
     .legal strong {
       color: #5c5c5c;
@@ -67,7 +70,7 @@
   </style>
 </head>
 <body>
-  <main class="page">
+  <div class="logo-wrap">
     <svg class="logo" viewBox="0 0 3000 1100" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
       <circle cx="240" cy="410" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
       <circle cx="460" cy="330" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
@@ -82,18 +85,18 @@
       <line x1="625" y1="620" x2="2200" y2="620" stroke="#D85A30" stroke-width="2" opacity="0.25"/>
       <text x="630" y="700" font-family="Arial, Helvetica, sans-serif" font-size="56" fill="#AAAAAA" letter-spacing="16">CONNECT  ·  SHARE  ·  LEARN</text>
     </svg>
+  </div>
 
-    <div class="legal">
-      <p>
-        <strong>Genel yasal uyarı:</strong> Bu internet sitesi henüz tamamlanmamış olup yalnızca genel bilgilendirme amaçlıdır. Sitede yer alan metin, görsel ve diğer içerikler taslak niteliğindedir; güncel, eksiksiz veya bağlayıcı bilgi için resmi duyuru ve iletişim kanalları esas alınmalıdır.
-      </p>
-      <p>
-        <strong>Sorumluluk reddi:</strong> RomatoLink, yapım aşamasındaki sitede yer alan veya eksik bırakılan bilgilerden doğabilecek doğrudan veya dolaylı zararlardan, bu bilgilere dayanılarak verilen kararlardan veya üçüncü kişilerin işlemlerinden sorumlu tutulamaz. İçerikler önceden haber verilmeksizin değiştirilebilir veya kaldırılabilir.
-      </p>
-      <p>
-        <strong>Kişisel veriler:</strong> Bu önizleme aşamasında e-posta veya şifre gibi veriler toplanmaz veya işlenmez. İleride kişisel veri işlenmesi söz konusu olursa 6698 sayılı Kişisel Verilerin Korunması Kanunu ve ilgili mevzuata uygun aydınlatma ve gerektiğinde açık rıza uygulanacaktır.
-      </p>
-    </div>
-  </main>
+  <footer class="legal">
+    <p>
+      <strong>Genel yasal uyarı:</strong> Bu internet sitesi henüz tamamlanmamış olup yalnızca genel bilgilendirme amaçlıdır. Sitede yer alan metin, görsel ve diğer içerikler taslak niteliğindedir; güncel, eksiksiz veya bağlayıcı bilgi için resmi duyuru ve iletişim kanalları esas alınmalıdır.
+    </p>
+    <p>
+      <strong>Sorumluluk reddi:</strong> RomatoLink, yapım aşamasındaki sitede yer alan veya eksik bırakılan bilgilerden doğabilecek doğrudan veya dolaylı zararlardan, bu bilgilere dayanılarak verilen kararlardan veya üçüncü kişilerin işlemlerinden sorumlu tutulamaz. İçerikler önceden haber verilmeksizin değiştirilebilir veya kaldırılabilir.
+    </p>
+    <p>
+      <strong>Kişisel veriler:</strong> Bu önizleme aşamasında e-posta veya şifre gibi veriler toplanmaz veya işlenmez. İleride kişisel veri işlenmesi söz konusu olursa 6698 sayılı Kişisel Verilerin Korunması Kanunu ve ilgili mevzuata uygun aydınlatma ve gerektiğinde açık rıza uygulanacaktır.
+    </p>
+  </footer>
 </body>
 </html>
