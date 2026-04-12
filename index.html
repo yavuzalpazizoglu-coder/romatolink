@@ -30,23 +30,32 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+      align-items: center;
       min-height: 100dvh;
       min-height: 100vh;
+      width: 100%;
+    }
+    .content {
+      width: min(calc(100vw - 2rem), var(--logo-max));
+      max-width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
     }
     .logo-wrap {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
+      padding: 1rem 0;
       width: 100%;
     }
     .logo-stack {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: min(calc(100vw - 2rem), var(--logo-max));
-      max-width: 100%;
+      width: 100%;
     }
     .logo {
       width: 100%;
@@ -67,9 +76,8 @@
     .legal {
       flex-shrink: 0;
       width: 100%;
-      max-width: min(calc(100vw - 2rem), var(--logo-max));
-      margin-inline: auto;
-      padding: 0.75rem 1rem 1.25rem;
+      margin: 0;
+      padding: 0.75rem 0 1.25rem;
       text-align: center;
       font-size: 0.68rem;
       line-height: 1.65;
@@ -82,6 +90,8 @@
     }
     .legal p {
       margin: 0 0 0.85rem;
+      text-align: center;
+      text-wrap: balance;
     }
     .legal p:last-child {
       margin-bottom: 0;
@@ -90,6 +100,7 @@
 </head>
 <body>
   <div class="layout">
+  <div class="content">
   <div class="logo-wrap">
     <div class="logo-stack">
     <svg class="logo" viewBox="0 0 2520 538" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
@@ -123,6 +134,7 @@
       <strong>Kişisel veriler:</strong> Bu önizleme aşamasında e-posta veya şifre gibi veriler toplanmaz veya işlenmez. İleride kişisel veri işlenmesi söz konusu olursa 6698 sayılı Kişisel Verilerin Korunması Kanunu ve ilgili mevzuata uygun aydınlatma ve gerektiğinde açık rıza uygulanacaktır.
     </p>
   </footer>
+  </div>
   </div>
 </body>
 </html>
