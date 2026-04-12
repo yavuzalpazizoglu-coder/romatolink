@@ -3,139 +3,172 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RomatoLink — Giriş (Yapım aşamasında)</title>
+  <title>RomatoLink</title>
   <style>
     :root {
-      --bg: #f7f5f2;
-      --text: #2d2d2d;
+      --bg1: #f4f0ea;
+      --bg2: #ebe4da;
+      --bg3: #f8f6f2;
       --accent: #d85a30;
-      --muted: #6b6b6b;
-      --legal: #8a8a8a;
-      --card: #ffffff;
-      --border: #e8e4de;
+      --legal: #7a7a7a;
     }
     * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
       margin: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      padding: 2rem 1.25rem 3rem;
-      font-family: Georgia, "Times New Roman", serif;
-      background: var(--bg);
-      color: var(--text);
+      justify-content: center;
+      padding: 2rem 1.25rem 2.5rem;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: #2d2d2d;
       line-height: 1.5;
+      overflow-x: hidden;
+      background: linear-gradient(125deg, var(--bg1), var(--bg2), var(--bg3), var(--bg1));
+      background-size: 320% 320%;
+      animation: bgFlow 22s ease-in-out infinite;
     }
-    .wrap {
-      max-width: 28rem;
+    @keyframes bgFlow {
+      0%, 100% { background-position: 0% 40%; }
+      50% { background-position: 100% 60%; }
+    }
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(64px);
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-a {
+      width: min(72vw, 420px);
+      height: min(72vw, 420px);
+      background: radial-gradient(circle, rgba(216, 90, 48, 0.35) 0%, transparent 70%);
+      top: -8%;
+      right: -12%;
+      animation: driftA 16s ease-in-out infinite;
+    }
+    .orb-b {
+      width: min(60vw, 360px);
+      height: min(60vw, 360px);
+      background: radial-gradient(circle, rgba(153, 60, 29, 0.22) 0%, transparent 70%);
+      bottom: -10%;
+      left: -14%;
+      animation: driftB 18s ease-in-out infinite;
+    }
+    @keyframes driftA {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-6%, 8%) scale(1.08); }
+    }
+    @keyframes driftB {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(8%, -5%) scale(1.06); }
+    }
+    .page {
+      position: relative;
+      z-index: 1;
       width: 100%;
+      max-width: 40rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .logo-shell {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 2rem;
+      padding: 0.5rem;
+      animation: logoFloat 5.5s ease-in-out infinite;
+    }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .logo-shell::before {
+      content: "";
+      position: absolute;
+      inset: -12%;
+      border-radius: 24px;
+      background: radial-gradient(ellipse at 50% 45%, rgba(216, 90, 48, 0.2) 0%, transparent 62%);
+      animation: haloPulse 3.8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes haloPulse {
+      from { opacity: 0.55; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1.04); }
+    }
+    .logo-shell::after {
+      content: "";
+      position: absolute;
+      inset: -5%;
+      border-radius: 20px;
+      background: linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 38%,
+        rgba(255, 255, 255, 0.55) 49%,
+        rgba(255, 255, 255, 0.75) 50%,
+        rgba(255, 255, 255, 0.55) 51%,
+        transparent 62%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      mix-blend-mode: soft-light;
+      animation: shineSweep 4.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes shineSweep {
+      0% { background-position: 120% 0; opacity: 0.35; }
+      35% { opacity: 0.85; }
+      100% { background-position: -120% 0; opacity: 0.35; }
     }
     .logo {
-      width: min(100%, 420px);
+      position: relative;
+      z-index: 1;
+      width: min(92vw, 440px);
       height: auto;
-      margin: 0 auto 1.25rem;
       display: block;
+      margin: 0 auto;
+      filter:
+        drop-shadow(0 0 18px rgba(216, 90, 48, 0.28))
+        drop-shadow(0 10px 28px rgba(45, 45, 45, 0.1));
+      animation: logoGleam 4s ease-in-out infinite alternate;
     }
-    .banner {
-      text-align: center;
-      margin-bottom: 1.75rem;
-    }
-    .banner h1 {
-      font-size: clamp(1.35rem, 3.5vw, 1.65rem);
-      font-weight: normal;
-      letter-spacing: 0.02em;
-      margin: 0 0 0.35rem;
-    }
-    .banner .sub {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin: 0;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem 1.5rem 1.5rem;
-      box-shadow: 0 8px 28px rgba(45, 45, 45, 0.06);
-    }
-    .card h2 {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      margin: 0 0 1.25rem;
-      text-align: center;
-      color: var(--text);
-    }
-    label {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #4a4a4a;
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-    input[type="email"],
-    input[type="password"] {
-      width: 100%;
-      padding: 0.65rem 0.75rem;
-      font-size: 1rem;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: #fafaf8;
-      margin-bottom: 1rem;
-    }
-    input:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-    }
-    .notice {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 0.8rem;
-      color: var(--muted);
-      background: rgba(216, 90, 48, 0.08);
-      border: 1px solid rgba(216, 90, 48, 0.2);
-      border-radius: 8px;
-      padding: 0.65rem 0.75rem;
-      margin-bottom: 1rem;
-      line-height: 1.45;
-    }
-    button[type="submit"] {
-      width: 100%;
-      padding: 0.7rem 1rem;
-      font-size: 0.95rem;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-weight: 600;
-      color: #fff;
-      background: linear-gradient(180deg, #e06a3d 0%, #c24e26 100%);
-      border: none;
-      border-radius: 8px;
-      cursor: not-allowed;
-      opacity: 0.55;
-    }
-    .divider {
-      width: 3rem;
-      height: 2px;
-      background: var(--accent);
-      opacity: 0.35;
-      margin: 2rem auto 1.5rem;
-      border: 0;
+    @keyframes logoGleam {
+      from {
+        filter:
+          drop-shadow(0 0 12px rgba(216, 90, 48, 0.18))
+          drop-shadow(0 8px 22px rgba(45, 45, 45, 0.08));
+      }
+      to {
+        filter:
+          drop-shadow(0 0 26px rgba(216, 90, 48, 0.42))
+          drop-shadow(0 12px 32px rgba(45, 45, 45, 0.12));
+      }
     }
     .legal {
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      font-size: 0.68rem;
-      line-height: 1.65;
-      color: var(--legal);
+      width: 100%;
       max-width: 36rem;
       margin: 0 auto;
       text-align: justify;
+      text-align-last: center;
+      font-size: 0.68rem;
+      line-height: 1.65;
+      color: var(--legal);
       hyphens: auto;
+      animation: legalFade 1.2s ease-out 0.15s both;
+    }
+    @keyframes legalFade {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
     .legal strong {
-      color: #6a6a6a;
+      color: #5c5c5c;
       font-weight: 600;
     }
     .legal p {
@@ -144,55 +177,58 @@
     .legal p:last-child {
       margin-bottom: 0;
     }
+    @media (prefers-reduced-motion: reduce) {
+      body,
+      .orb-a,
+      .orb-b,
+      .logo-shell,
+      .logo-shell::before,
+      .logo-shell::after,
+      .logo,
+      .legal {
+        animation: none !important;
+      }
+      body {
+        background-size: 100% 100%;
+      }
+      .legal {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <svg class="logo" viewBox="0 0 4000 1100" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
-      <circle cx="240" cy="410" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
-      <circle cx="460" cy="330" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
-      <circle cx="350" cy="630" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
-      <line x1="290" y1="460" x2="310" y2="565" stroke="#D85A30" stroke-width="4" opacity="0.3"/>
-      <line x1="290" y1="370" x2="400" y2="350" stroke="#D85A30" stroke-width="4" opacity="0.3"/>
-      <line x1="420" y1="400" x2="390" y2="565" stroke="#D85A30" stroke-width="4" opacity="0.3"/>
-      <circle cx="240" cy="410" r="36" fill="#D85A30"/>
-      <circle cx="460" cy="330" r="36" fill="#993C1D"/>
-      <circle cx="350" cy="630" r="36" fill="#D85A30"/>
-      <text x="620" y="560" font-family="Georgia, 'Times New Roman', serif" font-size="240" letter-spacing="-4"><tspan fill="#2D2D2D">Romato</tspan><tspan fill="#D85A30">Link</tspan></text>
-      <line x1="625" y1="620" x2="2200" y2="620" stroke="#D85A30" stroke-width="2" opacity="0.25"/>
-      <text x="630" y="700" font-family="Arial, Helvetica, sans-serif" font-size="56" fill="#AAAAAA" letter-spacing="16">CONNECT  ·  SHARE  ·  LEARN</text>
-    </svg>
+  <div class="orb orb-a" aria-hidden="true"></div>
+  <div class="orb orb-b" aria-hidden="true"></div>
 
-    <header class="banner">
-      <h1>Yapım aşamasındadır</h1>
-      <p class="sub">Giriş alanı henüz tamamlanmadı; aşağıdaki form yalnızca önizleme amaçlıdır.</p>
-    </header>
-
-    <section class="card" aria-labelledby="login-heading">
-      <h2 id="login-heading">Giriş</h2>
-      <form action="#" method="post" novalidate>
-        <p class="notice" role="status">
-          Bu sayfa geliştirme aşamasındadır. Kimlik doğrulama ve veri işleme henüz devrede değildir; alanlar şu an devre dışıdır.
-        </p>
-        <label for="email">E-posta</label>
-        <input id="email" name="email" type="email" autocomplete="username" disabled placeholder="ornek@eposta.com" />
-        <label for="password">Şifre</label>
-        <input id="password" name="password" type="password" autocomplete="current-password" disabled placeholder="••••••••" />
-        <button type="submit" disabled aria-disabled="true">Giriş yap</button>
-      </form>
-    </section>
-
-    <hr class="divider" />
+  <main class="page">
+    <div class="logo-shell">
+      <svg class="logo" viewBox="0 0 4000 1100" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
+        <circle cx="240" cy="410" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
+        <circle cx="460" cy="330" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
+        <circle cx="350" cy="630" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
+        <line x1="290" y1="460" x2="310" y2="565" stroke="#D85A30" stroke-width="4" opacity="0.3"/>
+        <line x1="290" y1="370" x2="400" y2="350" stroke="#D85A30" stroke-width="4" opacity="0.3"/>
+        <line x1="420" y1="400" x2="390" y2="565" stroke="#D85A30" stroke-width="4" opacity="0.3"/>
+        <circle cx="240" cy="410" r="36" fill="#D85A30"/>
+        <circle cx="460" cy="330" r="36" fill="#993C1D"/>
+        <circle cx="350" cy="630" r="36" fill="#D85A30"/>
+        <text x="620" y="560" font-family="Georgia, 'Times New Roman', serif" font-size="240" letter-spacing="-4"><tspan fill="#2D2D2D">Romato</tspan><tspan fill="#D85A30">Link</tspan></text>
+        <line x1="625" y1="620" x2="2200" y2="620" stroke="#D85A30" stroke-width="2" opacity="0.25"/>
+        <text x="630" y="700" font-family="Arial, Helvetica, sans-serif" font-size="56" fill="#AAAAAA" letter-spacing="16">CONNECT  ·  SHARE  ·  LEARN</text>
+      </svg>
+    </div>
 
     <div class="legal">
       <p>
-        <strong>Genel yasal uyarı:</strong> Bu internet sitesi ve giriş arayüzü henüz tamamlanmamış olup yalnızca genel bilgilendirme ve önizleme amaçlıdır. Sitede yer alan metin, görsel ve diğer içerikler taslak niteliğindedir; güncel, eksiksiz veya bağlayıcı bilgi için resmi duyuru ve iletişim kanalları esas alınmalıdır.
+        <strong>Genel yasal uyarı:</strong> Bu internet sitesi henüz tamamlanmamış olup yalnızca genel bilgilendirme amaçlıdır. Sitede yer alan metin, görsel ve diğer içerikler taslak niteliğindedir; güncel, eksiksiz veya bağlayıcı bilgi için resmi duyuru ve iletişim kanalları esas alınmalıdır.
       </p>
       <p>
         <strong>Sorumluluk reddi:</strong> RomatoLink, yapım aşamasındaki sitede yer alan veya eksik bırakılan bilgilerden doğabilecek doğrudan veya dolaylı zararlardan, bu bilgilere dayanılarak verilen kararlardan veya üçüncü kişilerin işlemlerinden sorumlu tutulamaz. İçerikler önceden haber verilmeksizin değiştirilebilir veya kaldırılabilir.
       </p>
       <p>
-        <strong>Kişisel veriler ve giriş:</strong> Bu önizleme aşamasında giriş işlevi etkin değildir; e-posta veya şifre gibi veriler sunucuya iletilmez veya işlenmez. İleride giriş özelliği açıldığında, kişisel verilerin işlenmesi 6698 sayılı Kişisel Verilerin Korunması Kanunu ve ilgili mevzuata uygun olarak aydınlatma metinleri ve açık rıza gerektirdiği hallerde açık rıza ile yürütülecektir.
+        <strong>Kişisel veriler:</strong> Bu önizleme aşamasında e-posta veya şifre gibi veriler toplanmaz veya işlenmez. İleride kişisel veri işlenmesi söz konusu olursa 6698 sayılı Kişisel Verilerin Korunması Kanunu ve ilgili mevzuata uygun aydınlatma ve gerektiğinde açık rıza uygulanacaktır.
       </p>
     </div>
   </main>
