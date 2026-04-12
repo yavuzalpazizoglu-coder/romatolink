@@ -41,11 +41,28 @@
       padding: 1rem;
       width: 100%;
     }
-    .logo {
+    .logo-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: min(calc(100vw - 2rem), var(--logo-max));
       max-width: 100%;
+    }
+    .logo {
+      width: 100%;
       height: auto;
       display: block;
+    }
+    .tagline {
+      margin: 0.65rem 0 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(0.7rem, 2.1vw, 0.8125rem);
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: #aaaaaa;
+      text-align: center;
+      line-height: 1.35;
     }
     .legal {
       flex-shrink: 0;
@@ -74,6 +91,7 @@
 <body>
   <div class="layout">
   <div class="logo-wrap">
+    <div class="logo-stack">
     <svg class="logo" viewBox="0 0 2520 538" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
       <g transform="translate(-132,-222)">
         <circle cx="240" cy="410" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
@@ -90,6 +108,8 @@
         <text x="630" y="700" font-family="Arial, Helvetica, sans-serif" font-size="56" fill="#AAAAAA" letter-spacing="16">CONNECT  ·  SHARE  ·  LEARN</text>
       </g>
     </svg>
+    <p class="tagline">Planlama aşamasında</p>
+    </div>
   </div>
 
   <footer class="legal">
