@@ -10,14 +10,17 @@
       --legal: #7a7a7a;
     }
     * { box-sizing: border-box; }
+    html {
+      height: 100%;
+    }
     body {
       margin: 0;
+      min-height: 100%;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem 1rem 2rem;
+      min-height: 100dvh;
+      display: grid;
+      place-items: center;
+      padding: clamp(1rem, 3vw, 1.75rem);
       font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
       color: #2d2d2d;
       line-height: 1.5;
@@ -25,14 +28,17 @@
     }
     .page {
       width: 100%;
-      max-width: min(100%, 56rem);
+      max-width: min(100vw - 2rem, 1440px);
+      margin-inline: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       text-align: center;
     }
     .logo {
-      width: min(100vw - 2rem, 1440px);
+      width: 100%;
+      max-width: 1440px;
       height: auto;
       display: block;
       margin: 0 auto 2rem;
@@ -62,7 +68,7 @@
 </head>
 <body>
   <main class="page">
-    <svg class="logo" viewBox="0 0 4000 1100" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
+    <svg class="logo" viewBox="0 0 3000 1100" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-label="RomatoLink">
       <circle cx="240" cy="410" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
       <circle cx="460" cy="330" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
       <circle cx="350" cy="630" r="105" fill="none" stroke="#D85A30" stroke-width="6" opacity="0.35"/>
